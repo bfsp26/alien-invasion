@@ -1,5 +1,6 @@
 import sys
 import pygame
+from settings import Settings
 
 
 class AlienInvasion:
@@ -9,10 +10,12 @@ class AlienInvasion:
         """"Initialize the game, and create game resources."""
         # The pygame.init() function initializes the background settings that Pygame needs to work properly.
         pygame.init()
+        # Create an instance of Settings
+        self.settings = Settings()
 
         # We call pygame.display.set_mode() to create a display window, on which we’ll draw all the game’s graphical
         # elements.
-        self.screen = pygame.display.set_mode((1200, 800))
+        self.screen = pygame.display.set_mode((self.settings.screen_with, self.settings.screen_with))
         pygame.display.set_caption("Alien Invasion")
 
         # Set the background color.
@@ -27,7 +30,7 @@ class AlienInvasion:
                     sys.exit()
 
             # Redraw the screen during each pass through the loop.
-            self.screen.fill(self.bg_color)
+            self.screen.fill(self.settings.bg_color)
 
             # Make the most recently drawn screen visible.
             pygame.display.flip()
